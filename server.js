@@ -7,6 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+
 // Create the Express app
 const app = express();
 
@@ -44,4 +45,11 @@ app.use('/api/auth', authRoutes);
 //anime link
 const animeRoutes = require('./routes/anime');
 app.use('/api/anime', animeRoutes);
+
+//review link
+const reviewRoutes = require('./routes/reviews');
+app.use('/api/reviews', reviewRoutes);
+
+
+
 
