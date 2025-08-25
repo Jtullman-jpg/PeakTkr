@@ -24,3 +24,25 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+
+// GET /api/reviews
+router.get("/", async (req, res) => {
+  try {
+    const filter = {};
+    if (req.query.anime) {
+      filter.anime = req.query.anime;
+    }
+    if (req.query.user) {
+      filter.user = req.query.user;
+    }
+
+    const reviews = await Review.find(filter)
+      .populate("user", "username")
+      .populate("anime", "title image_url");
+
+    res.status(200).json(reviews);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to get reviews", details: err.message });
+  }
+});
+
