@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// ✅ Profile route
+// Profile route
 router.get('/profile', async (req, res) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
